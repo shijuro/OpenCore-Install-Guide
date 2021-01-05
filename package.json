@@ -1,0 +1,41 @@
+{
+   "name": "OpenCore-Install-Guide",
+   "version": "0.6.4",
+   "description": "Guide to put macOS on unsupported devices",
+   "main": "",
+   "author": {
+      "name": "Shijuro",
+      "url": "https://github.com/shijuro"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/shijuro/OpenCore-Install-Guide.git"
+   },
+   "scripts": {
+      "dev": "vuepress dev src",
+      "build": "vuepress build src",
+      "fix-lint": "run-script-os",
+      "fix-lint:default": "(echo Attempting to fix lint... && markdownlint '**/*.md' -f && echo Fixed successfully, please commit.) || (echo Fix failed! && exit 1)",
+      "fix-lint:win32": "(echo Attempting to fix lint... && markdownlint **/*.md -f && echo Fixed successfully, please commit.) || (echo Fix failed! && exit 1)",
+      "lint": "run-script-os",
+      "lint:default": "(echo Linting... && markdownlint '**/*.md' && echo Lint passed.) || (echo Lint failed! Please review and fix errors. && exit 1)",
+      "lint:win32": "(echo Linting... && markdownlint **/*.md && echo Lint passed.) || (echo Lint failed! Please review and fix errors. && exit 1)",
+      "lint-ci": "run-script-os",
+      "lint-ci:default": "(echo Linting... && markdownlint '**/*.md' && echo Lint passed.) || ((echo Lint failed, attempting fix... && markdownlint '**/*.md' -f && echo Fix generated successfully. Please apply the following diff using git apply && git diff) || echo Fix failed! && exit 1)",
+      "lint-ci:win32": "(echo Linting... && markdownlint **/*.md && echo Lint passed.) || ((echo Lint failed, attempting fix... && markdownlint **/*.md -f && echo Fix generated successfully. Please apply the following diff using git apply && git diff) || echo Fix failed! && exit 1)"
+   },
+   "license": "CC-BY-NC-SA-4.0",
+   "devDependencies": {
+      "@vuepress/plugin-back-to-top": "^1.7.1",
+      "markdown-it-multimd-table": "^4.0.3",
+      "markdown-link-check": "^3.8.5",
+      "markdownlint-cli": "^0.26.0",
+      "run-script-os": "^1.1.4",
+      "spellchecker-cli": "^4.4.0",
+      "vuepress": "^1.7.1",
+      "vuepress-plugin-medium-zoom": "^1.1.9",
+      "vuepress-plugin-zooming": "^1.1.8",
+      "vuepress-theme-succinct": "^1.6.4"
+   },
+   "homepage": "https://shijuro.github.io/OpenCore-Install-Guide/"
+}

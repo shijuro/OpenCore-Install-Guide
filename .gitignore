@@ -1,0 +1,9 @@
+_book/
+node_modules/
+.vscode/
+.DS_Store
+src/.vuepress/dist
+src/.vuepress/.config.js.swp
+yarn.lock
+yarn-error.log
+package-lock.json

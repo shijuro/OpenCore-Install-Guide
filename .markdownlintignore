@@ -1,0 +1,10 @@
+/node_modules/
+/_book/
+*.json
+/assets/
+/.git/
+/icons/
+/img/
+/styles/
+.travis.yml
+/src/.vuepress/

@@ -1,0 +1,333 @@
+@require './config'
+@require './code'
+@require './custom-blocks'
+@require './arrow'
+@require './wrapper'
+@require './toc'
+@require './fallback'
+
+for f in $themeFont
+  @import url(f)
+
+:root, [data-theme='light']
+  --accentColor $accentColor
+  --textColor $textColor
+  --textMutedColor lighten($textColor, 25%)
+  --selectionColor transparentify($textColor, $bodyBgColor, 0.1)
+  --headerColor lighten($textColor, 10%)
+  --descriptionColor lighten($textColor, 40%)
+  --borderColor $borderColor
+  --codeColor lighten($textColor, 20%)
+  --codeBgColor $codeBgColor
+  --codeBgHighlightColor tint($codeBgColor, 10%)
+  --arrowBgColor $arrowBgColor
+  --bodyBgColor $bodyBgColor
+  --bodyComplementColor darken($bodyBgColor, 2%)
+  --badgeTipColor $badgeTipColor
+  --badgeWarningColor $badgeWarningColor
+  --badgeWarningTextColor darken($badgeWarningColor, 70%)
+  --badgeWarningTitleColor darken($badgeWarningColor, 50%)
+  --badgeErrorColor $badgeErrorColor
+  --badgeErrorTextColor darken($badgeErrorColor, 70%)
+  --badgeErrorTitleColor darken($badgeErrorColor, 50%)
+  --actionBtnBorderColor darken($accentColor, 10%)
+  --actionBtnHoverBorderColor lighten($accentColor, 10%)
+  --codeBlockActiveColor darken($accentColor, 35%)
+  --navItemHoverColor lighten($accentColor, 8%)
+
+[data-theme='dark']
+  --accentColor $accentColorDark
+  --textColor $textColorDark
+  --textMutedColor darken($textColorDark, 25%)
+  --selectionColor transparentify($textColorDark, $bodyBgColorDark, 0.1)
+  --headerColor darken($textColorDark, 5%)
+  --descriptionColor darken($textColorDark, 10%)
+  --borderColor $borderColorDark
+  --codeColor darken($textColorDark, 20%)
+  --codeBgColor $codeBgColorDark
+  --codeBgHighlightColor tint($codeBgColorDark, 3%)
+  --arrowBgColor $arrowBgColorDark
+  --bodyBgColor $bodyBgColorDark
+  --bodyComplementColor lighten($bodyBgColorDark, 5%)
+  --badgeTipColor $badgeTipColorDark
+  --badgeWarningColor $badgeWarningColorDark
+  --badgeWarningTextColor lighten($badgeWarningColorDark, 70%)
+  --badgeWarningTitleColor lighten($badgeWarningColorDark, 50%)
+  --badgeErrorColor $badgeErrorColorDark
+  --badgeErrorTextColor lighten($badgeErrorColorDark, 70%)
+  --badgeErrorTitleColor lighten($badgeErrorColorDark, 50%)
+  --actionBtnBorderColor darken($accentColorDark, 10%)
+  --actionBtnHoverBorderColor darken($accentColorDark, 10%)
+  --codeBlockActiveColor darken($accentColor, 35%)
+  --navItemHoverColor darken($accentColorDark, 8%)
+
+*
+  &::-webkit-scrollbar, &::-webkit-scrollbar-track
+    bgColor $bodyComplementColorDefault var(--bodyComplementColor)
+
+  &::-webkit-scrollbar-thumb
+    bgColor $selectionColorDefault var(--selectionColor)
+
+  &::-webkit-scrollbar-button
+    bgColor $bodyComplementColorDefault var(--bodyComplementColor)
+
+  scrollbar-color $selectionColorDefault $bodyComplementColorDefault
+  scrollbar-color var(--selectionColor) var(--bodyComplementColor)
+
+  scroll-behavior smooth
+
+  @media screen and (prefers-reduced-motion: true)
+    scroll-behavior auto
+
+  &::-moz-selection
+    bg $selectionColorDefault var(--selectionColor)
+  
+  &::selection
+    bg $selectionColorDefault var(--selectionColor)
+
+html, body
+  padding 0
+  margin 0
+  bgColor $bodyBgColorDefault var(--bodyBgColor)
+
+body, .theme-container, .theme-code-group__nav-tab
+  font-family $bodyFontFamily, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+
+body, .theme-container
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  text-rendering optimizeLegibility
+  font-size $bodyFontSize
+
+  if $textSizeAdjust
+    text-size-adjust 100%
+
+  text $textColorDefault var(--textColor)
+
+body
+  min-height 100vh
+
+.page
+  padding-left $sidebarWidth
+
+.navbar
+  position fixed
+  z-index 20
+  top 0
+  left 0
+  right 0
+  height $navbarHeight
+  bgColor $bodyBgColorDefault var(--bodyBgColor)
+  box-sizing border-box
+  border-bottom 1px solid
+  borderBottomColor $borderColorDefault var(--borderColor)
+
+.sidebar-mask
+  position fixed
+  z-index 9
+  top 0
+  left 0
+  width 100vw
+  height 100vh
+  display none
+
+.sidebar
+  font-size 16px
+  bgColor $bodyBgColorDefault var(--bodyBgColor)
+  width $sidebarWidth
+  position fixed
+  z-index 10
+  margin 0
+  top $navbarHeight
+  left 0
+  bottom 0
+  box-sizing border-box
+  border-right 1px solid
+  borderRightColor $borderColorDefault var(--borderColor)
+  overflow-y auto
+
+.search-box
+  input
+    text $textMutedColorDefault var(--textMutedColor) true
+    borderColor $borderColorDefault var(--borderColor) true
+    bgColor $bodyBgColorDefault var(--bodyBgColor) true
+    &:focus
+      borderColor $accentColorDefault var(--accentColor) true
+  .suggestions
+    bg $bodyBgColorDefault var(--bodyBgColor) true
+    borderColor $borderColorDefault var(--borderColor) true
+  .suggestion
+    a
+      text $textMutedColorDefault var(--textMutedColor) true
+    &.focused
+      bgColor $bodyComplementColorDefault var(--bodyComplementColor) true
+      a
+        text $accentColorDefault var(--accentColor) true
+
+{$contentClass}:not(.custom)
+  @extend $wrapper
+  > *:first-child
+    margin-top $navbarHeight
+
+  a:hover
+    text-decoration underline
+
+  p.demo
+    padding 1rem 1.5rem
+    border 1px solid
+    borderColor $borderColorDefault var(--borderColor)
+    border-radius 4px
+
+  img
+    max-width 100%
+
+{$contentClass}.custom
+  padding 0
+  margin 0
+
+  img
+    max-width 100%
+
+a
+  font-weight 500
+  text $accentColorDefault var(--accentColor)
+  text-decoration none
+
+p a code
+  font-weight 400
+  text $accentColorDefault var(--accentColor)
+
+kbd
+  bg $textMutedColorDefault var(--textMutedColor)
+  border solid 0.15rem
+  borderColor $borderColorDefault var(--borderColor)
+  border-bottom solid 0.25rem
+  borderBottomColor $borderColorDefault var(--borderColor)
+  border-radius 0.15rem
+  padding 0 0.15em
+
+blockquote
+  font-size inherit
+  text $textMutedColorDefault var(--textMutedColor)
+  border-left .2rem solid
+  borderLeftColor $borderColorDefault var(--borderColor)
+  margin 0.5rem 0
+  padding .25rem 0 .25rem 1rem
+
+  & > p
+    margin 0
+
+ul, ol
+  padding-left 1.2em
+
+strong
+  font-weight 600
+
+h1, h2, h3, h4, h5, h6
+  font-weight 600
+  line-height 1.25
+
+  {$contentClass}:not(.custom) > &
+    margin-top (0.5rem - $navbarHeight)
+    padding-top ($navbarHeight + 1rem)
+    margin-bottom 0
+
+    &:first-child
+      margin-top -1.5rem
+      margin-bottom 1rem
+
+      + p, + pre, + .custom-block
+        margin-top 2rem
+
+  &:hover .header-anchor
+    opacity: 1
+
+h1
+  font-size 2.2rem
+
+h2
+  font-size 1.65rem
+  padding-bottom .3rem
+  border-bottom 1px solid
+  borderBottomColor $borderColorDefault var(--borderColor)
+
+h3
+  font-size 1.35rem
+
+a.header-anchor
+  font-size 0.85em
+  float left
+  margin-left -0.87em
+  padding-right 0.23em
+  margin-top 0.125em
+  opacity 0
+
+  &:hover
+    text-decoration none
+
+code, kbd, .line-number
+  font-family $monoFontFamily, source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
+
+p, ul, ol, th, td
+  line-height 1.7
+
+hr
+  border 0
+  border-top 1px solid
+  borderTopColor $borderColorDefault var(--borderColor)
+
+table
+  border-collapse collapse
+  margin 1rem 0
+  display: block
+  overflow-x: auto
+
+tr
+  border-top 1px solid
+  borderTopColor $borderColorDefault var(--borderColor)
+
+  &:nth-child(2n)
+    bgColor $bodyComplementColorDefault var(--bodyComplementColor)
+
+th, td
+  border 1px solid
+  borderColor $borderColorDefault var(--borderColor)
+  padding .6em 1em
+
+.theme-code-group__nav
+  margin-bottom -15px !important
+  bgColor $codeBgHighlightColorDefault var(--codeBgHighlightColor) true
+
+.theme-code-group__nav-tab
+  padding-right 10px !important
+  padding-left 10px !important
+
+.theme-code-group__nav-tab-active
+  bgColor $codeBlockActiveColorDefault var(--codeBlockActiveColor) true
+  outlineColor $codeBlockActiveColorDefault var(--codeBlockActiveColor) true
+  border none !important
+  border-radius 5px
+
+.theme-container
+  &.sidebar-open
+    .sidebar-mask
+      display: block
+
+  &.no-navbar
+    {$contentClass}:not(.custom) > h1, h2, h3, h4, h5, h6
+      margin-top 1.5rem
+      padding-top 0
+
+    .sidebar
+      top 0
+
+
+@media (min-width: ($MQMobile + 1px))
+  .theme-container.no-sidebar
+    .sidebar
+      display none
+
+    .page
+      padding-left 0
+
+@require 'mobile.styl'
