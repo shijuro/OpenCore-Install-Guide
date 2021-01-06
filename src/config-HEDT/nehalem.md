@@ -215,7 +215,7 @@ TL;DR, удалите все PciRoot здесь, поскольку мы не б
 | AppleCpuPmCfgLock | YES | Не требуется, если `CFG-Lock` отключен в BIOS |
 | AppleXcpmExtraMsrs | YES | |
 | DisableIOMapper | YES | Не требуется, если `VT-D` отключен в BIOS |
-| LapicKernelPanic | NO | Компьютеры HP требуют этот квирк |
+| LapicKernelPanic | NO | Компьютеры HP нуждаются в этом квирке |
 | PanicNoKextDump | YES | |
 | PowerTimeoutKernelPanic | YES | |
 | XhciPortLimit | YES | Если ваша плата не имеет USB 3.0, вы можете это выключить |
@@ -248,7 +248,7 @@ TL;DR, удалите все PciRoot здесь, поскольку мы не б
 * **IncreasePciBarSize**: NO
   * Увеличивает размер 32-битной шины PCI IOPCIFamily с 1 до 4 ГБ, включение Above4GDecoding в BIOS гораздо более чистый и безопасный подход. Для некоторых X99 плат, вам это может потребоваться, если вы испытываете панику ядра на IOPICFamily. Обратите внимание, что это не требуется на Mojave и новее
 * **LapicKernelPanic**: NO
-  * Отключает панику ядра на прерывании lapic AP ядра, что обычно необходимо для систем HP. Эквивалент в Clover `Kernel LAPIC`
+  * Отключает панику ядра на прерывании lapic AP ядра, что обычно необходимо для систем HP. Эквивалентно `Kernel LAPIC` в Clover
 * **LegacyCommpage**: NO
   * Устраняет требование SSSE3 для 64-битных процессоров в macOS, в основном актуально для 64-битных процессоров Pentium 4 (например, Prescott)
 * **PanicNoKextDump**: YES

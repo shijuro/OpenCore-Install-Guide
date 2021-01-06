@@ -219,7 +219,7 @@ TL;DR, удалите все PciRoot здесь, поскольку мы не б
 | Quirk | Enabled | Комментарии |
 | :--- | :--- | :--- |
 | DisableIOMapper | YES | Не требуется, если `VT-D` отключен в BIOS |
-| LapicKernelPanic | NO | Компьютеры HP требуют этот квирк |
+| LapicKernelPanic | NO | Компьютеры HP нуждаются в этом квирке |
 | PanicNoKextDump | YES | Не требуется для 10.12 и старее |
 | PowerTimeoutKernelPanic | YES | Не требуется для 10.14 и старее |
 
@@ -243,7 +243,7 @@ TL;DR, удалите все PciRoot здесь, поскольку мы не б
 * **ExtendBTFeatureFlags** NO
   * Полезно для тех, у кого есть проблемы со стабильностью работы с картами не от Apple/Fenvi
 * **LapicKernelPanic**: NO
-  * Отключает панику ядра на прерывании lapic AP ядра, что обычно необходимо для систем HP. Эквивалент в Clover `Kernel LAPIC`
+  * Отключает панику ядра на прерывании lapic AP ядра, что обычно необходимо для систем HP. Эквивалентно `Kernel LAPIC` в Clover
 * **LegacyCommpage**: NO
   * Устраняет требование SSSE3 для 64-битных процессоров в macOS, в основном актуально для 64-битных процессоров Pentium 4 (например, Prescott)
 * **PanicNoKextDump**: YES
