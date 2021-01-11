@@ -1,4 +1,5 @@
 const { description } = require('../../package')
+const moment = require('moment')
 
 module.exports = {
     title: 'Руководство по установке OpenCore',
@@ -301,6 +302,14 @@ module.exports = {
                 selector: "img",
                 options: {
                     background: 'var(--bodyBgColor)'
+                }
+            }],
+        ['@vuepress/last-updated',
+            {
+                transformer: (timestamp) => {
+                    const moment = require('moment')
+                    moment.locale('ru')
+                    return moment(timestamp).fromNow()
                 }
             }],
     ]

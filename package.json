@@ -30,6 +30,7 @@
       "markdown-it-multimd-table": "^4.0.3",
       "markdown-link-check": "^3.8.6",
       "markdownlint-cli": "^0.26.0",
+      "moment": "^2.29.1",
       "run-script-os": "^1.1.4",
       "vuepress": "^1.8.0",
       "vuepress-plugin-medium-zoom": "^1.1.9",
