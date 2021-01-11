@@ -23,7 +23,7 @@
 * USB-устройства
   * У некоторых SMBIOS есть своя собственная USB Map, которая может подключаться к вашему оборудованию, вызывая проблемы с USB.
     * Подробнее см. здесь: [USB Mapping](https://dortania.github.io/OpenCore-Post-Install/usb/)
-  * Также следует отметить, что SMBIOS с процессорами Skylake+ также потребуют [USBX устройства](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl#L54L79) для исправления выходного тока USB
+  * Также следует отметить, что SMBIOS с процессорами Skylake+ также потребуют [USBX устройства](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-EC-USBX.dsl#L54L79) для исправления выходного тока USB
     * Подробнее см. здесь: [Исправление питания USB](https://dortania.github.io/OpenCore-Post-Install/usb/misc/power.html)
 
 ::: details SMBIOS поддерживающие XCPM

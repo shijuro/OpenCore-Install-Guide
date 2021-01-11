@@ -122,12 +122,12 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:opencore-version
 Пользователям X79, X99 и X299 следует обратить особое внимание на следующее. В Big Sur добавлены новые требования к ACPI, так что вам нужно получить несколько новых SSDT:
 
 * X79
-  * [SSDT-UNC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-UNC.dsl)
+  * [SSDT-UNC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-UNC.dsl)
 * X99
-  * [SSDT-UNC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-UNC.dsl)
-  * [SSDT-RTC0-RANGE](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0-RANGE.dsl)
+  * [SSDT-UNC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-UNC.dsl)
+  * [SSDT-RTC0-RANGE](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0-RANGE.dsl)
 * X299
-  * [SSDT-RTC0-RANGE](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0-RANGE.dsl)
+  * [SSDT-RTC0-RANGE](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0-RANGE.dsl)
 
 Для тех, кто хотел бы скомпилированные файлы, смотрите здесь:
 
@@ -176,7 +176,7 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:opencore-version
 
 ![](../../../img/extras/big-sur/readme/rtc-error.jpg)
 
-Как было ранее упомянуто, материнские платы Intel HEDT могут иметь некоторые проблемы с RTC устройствами в ACPI. Чтобы устранить эту неполадку, вам нужно взглянуть на свое RTC устройство, и посмотреть, какие регионы отсутствуют. Для получения дополнительной информации см. здесь: [SSDT-RTC0-RANGE.dsl](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0-RANGE.dsl)
+Как было ранее упомянуто, материнские платы Intel HEDT могут иметь некоторые проблемы с RTC устройствами в ACPI. Чтобы устранить эту неполадку, вам нужно взглянуть на свое RTC устройство, и посмотреть, какие регионы отсутствуют. Для получения дополнительной информации см. здесь: [SSDT-RTC0-RANGE.dsl](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0-RANGE.dsl)
 
 ### Зависает на `ramrod`(^^^^^^^^^^^^^)
 
@@ -191,7 +191,7 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:opencore-version
 
 ### X79 и X99 паникуют на IOPCIFamily
 
-Это происходит из-за того, что в ACPI включены неиспользуемые Uncore PCI Bridges, и поэтому IOPCIFamily будет вызывать панику ядра, при зондировании неизвестных устройств. Чтобы исправить это, вам необходимо добавить [SSDT-UNC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-UNC.dsl)
+Это происходит из-за того, что в ACPI включены неиспользуемые Uncore PCI Bridges, и поэтому IOPCIFamily будет вызывать панику ядра, при зондировании неизвестных устройств. Чтобы исправить это, вам необходимо добавить [SSDT-UNC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-UNC.dsl)
 
 ### DeviceProperties не инжектируется
 
@@ -199,7 +199,7 @@ nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:opencore-version
 
 ![](../../../img/extras/big-sur/readme/acpi-path.png)
 
-Если это свойство не найдено, вам необходимо создать SSDT, который обеспечивает полный путь, поскольку, скорее всего, у вас есть PCI Bridge, который не задокументирован в ваших ACPI таблицах. Пример такого SSDT можно найти здесь: [SSDT-BRG0](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-BRG0.dsl)
+Если это свойство не найдено, вам необходимо создать SSDT, который обеспечивает полный путь, поскольку, скорее всего, у вас есть PCI Bridge, который не задокументирован в ваших ACPI таблицах. Пример такого SSDT можно найти здесь: [SSDT-BRG0](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-BRG0.dsl)
 
 * **Примечание**: Эта проблема может также всплывать и в старых версиях macOS, но Big Sur больше всего подвержен проблемам.
 
