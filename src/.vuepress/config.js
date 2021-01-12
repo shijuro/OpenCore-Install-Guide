@@ -54,7 +54,7 @@ module.exports = {
 
     themeConfig: {
         lastUpdated: 'Последнее обновление',
-        repo: 'shijurotest/OpenCore-Install-Guide',
+        repo: 'shijuro/OpenCore-Install-Guide',
         docsDir: 'src',
 		editLinks: true,
         editLinkText: 'Помогите нам улучшить эту страницу!',
