@@ -2,7 +2,7 @@
 
 Это репозиторий неофициального перевода на русский язык [оригинального руководства по установке OpenCore от Dortania](https://github.com/dortania/OpenCore-Install-Guide). Он может содержать различные ошибки перевода, неточности, а также может легко устареть.
 
-Этот перевод поддерживается силами одного человека, а именно [HibanaSama](https://github.com/HibanaSama).
+Этот перевод поддерживается [HibanaSama](https://github.com/HibanaSama).
 
 Перевод этого руководства можно найти [здесь](https://shijuro.github.io/OpenCore-Install-Guide).
 
@@ -21,7 +21,7 @@
 
 ## Лицензия
 
-Этот перевод руководства распространяется по лицензии [CC BY-NC-SA 4.0](./LICENSE.md).
+Этот перевод распространяется по лицензии [CC BY-NC-SA 4.0](./LICENSE.md).
 
 Все права принадлежат их правообладателям.
 
@@ -48,6 +48,6 @@ I'm appreciate that you want to contribute to this translation of the guide. Ple
 
 ## License
 
-This translation of the guide is licensed under [CC BY-NC-SA 4.0](./LICENSE.md).
+This translation is licensed under [CC BY-NC-SA 4.0](./LICENSE.md).
 
 All rights belong to their respective owners.
