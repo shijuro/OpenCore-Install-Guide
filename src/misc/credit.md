@@ -30,7 +30,7 @@
 
 * [al3xtjames](https://github.com/al3xtjames)
 * [Andrey1970AppleLife](https://github.com/Andrey1970AppleLife)
-* [Download-Fritz](https://github.com/Download-Fritz)
+* [mhaeuser (ранее известен как Download-Fritz)](https://github.com/mhaeuser)
 * [Goldfish64](https://github.com/Goldfish64)
 * [nms42](https://github.com/nms42)
 * [PMHeart](https://github.com/PMHeart)
