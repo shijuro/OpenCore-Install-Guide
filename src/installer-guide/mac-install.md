@@ -5,7 +5,7 @@
 
 В то время как вам не нужна чистая установка macOS чтобы использовать OpenCore, некоторые пользователи предпочитают иметь свежую версию ОС с обновлением их Boot Manager.
 
-Для начала, мы захотим получить себе копию macOS. Вы можете пропустить этот шаг и перейти к форматированию USB, если вы просто делаете загрузочную флешку с OpenCore, а не установщик. Для всех остальных, вы можете загрузить macOS из App Store или с помощью gibMacOS.
+Для начала, мы захотим получить себе копию macOS. Вы можете пропустить этот шаг и перейти к форматированию USB, если вы просто делаете загрузочную флешку с OpenCore, а не установщик. Для всех остальных, вы можете загрузить macOS из App Store или с помощью скрипта от Munki.
 
 ## Скачивание macOS: современные версии
 
@@ -13,17 +13,19 @@
 
 С компьютера macOS, отвечающего требованиям версии ОС, которую вы хотите установить, перейдите в App Store и загрузите желаемый релиз ОС и продолжайте [**настройку установщика**](#настроика-установщика).
 
-Для компьютеров, которым нужен конкретный релиз ОС или не удается загрузить из App Store, вы можете использовать утилиту gibMacOS.
+Для компьютеров, которым нужен конкретный релиз ОС или не удается загрузить из App Store, вы можете использовать утилиту InstallInstallMacOS от Munki.
 
-А теперь, скачайте [gibMacOS](https://github.com/corpnewt/gibMacOS), затем распакуйте его в локальный каталог.
+Чтобы запустить его, просто скопируйте и вставьте следующую команду в терминал:
 
-Дальше запустим `gibMacOS.command`:
+```sh
+mkdir ~/macOS-installer && cd ~/macOS-installer && curl -O https://raw.githubusercontent.com/munki/macadmin-scripts/main/installinstallmacos.py && sudo python installinstallmacos.py
+```
 
-![](../../img/installer-guide/mac-install-md/gib.png)
+![](../../img/installer-guide/mac-install-md/munki.png)
 
-Как вы видите, мы получаем большой лист установщиков macOS. Если вам нужна бета версия macOS, вы можете выбрать `C. Change Catalog`. Для этого примера, мы выберим 1:
+Как вы видите, мы получаем большой список установщиков macOS. Если вам нужна определенная версия macOS, вы можете выбрать её, набрав её номер. Для этого примера, мы выберим 10:
 
-![](../../img/installer-guide/mac-install-md/gib-process.png)
+![](../../img/installer-guide/mac-install-md/munki-process.png)
 
 * **Примечание к macOS 11, Big Sur**: Так как эта ОС совершенна новая, есть некоторые проблемы с определенными системами, которые нужно решить. Для получения дополнительной информации, смотрите здесь: [OpenCore и macOS 11: Big Sur](../extras/big-sur/README.md)
   * Для начинающих пользователей, мы рекомендуем macOS 10.15, Catalina
@@ -31,44 +33,14 @@
 
 Это займёт некоторое время, поскольку мы загружаем установщик macOS весом 8Гб+, поэтому мы настоятельно рекомендуем прочитать остальную часть руководства, пока вы ждёте.
 
-Как только закончите, нам нужно либо распаковать установщик, либо собрать его:
+По завершению, вы найдёте в папке `~/macOS-Installer/` файл DMG содержащий установщик macOS, и названный, например `Install_macOS_11.1-20C69.dmg`. Смонтируйте его и вы найдёте приложение-установщик.
 
-* [Распаковка установщика](#распаковка-установщика)
-  * Для macOS 11+
-* [Сборка установщика](#сборка-установщика)
-  * Для 10.15 или старее
+* Примечание: Мы рекомендуем переместить приложение Установка macOS.app в папку `/Applications`, поскольку мы будем выполнять команды в этой директории.
+* Примечание 2: Нажатие сочетания клавиш Cmd+Shift+G в Finder позволит вам легче перейти к папке `~/macOS-installer`
 
-### Распаковка установщика
+![](../../img/installer-guide/mac-install-md/munki-done.png)
 
-Для macOS 11 и новее, Apple теперь запаковывает установщик в пакет InstallAssistant. Он будет располагаться в папке `gibMacOS/macOS Downloads/`:
-
-![](../../img/extras/big-sur/readme/final-download.png)
-
-Запустите InstallAssistant.pkg и выберите, с какого накопителя вы будете загружаться, туда будет положен Install.app:
-
-![](../../img/extras/big-sur/readme/install-pkg.png)
-
-После этого, вы должны найти его в папке Программы (Applications):
-
-![](../../img/extras/big-sur/readme/done.png)
-
-Начиная отсюда, перейдите к [Настройке установщика](#настроика-установщика) чтобы закончить свою работу.
-
-### Сборка установщика
-
-Для macOS 10.15 и старее, установщик будет скачан по частям, и он должен быть собран. Здесь мы захотим запустить `BuildmacOSInstallApp.command`:
-
-![](../../img/installer-guide/mac-install-md/gib-location.png)
-
-Вам будет предложено выбрать файлы установщика macOS, которые были загружены в папку `macOS Downloads` в каталоге gibMacOS.
-
-В Finder перейдите к папке, содержащей загруженные файлы и, либо перетащите папку в командную строку, либо «Cmd + C» и вставьте в терминал.
-
-По завершению, выйдите из утилиты. Установочный файл вы найдёте в каталоге.
-
-Переместите только что собранный образ в папку Приложения - это упростит следующий раздел.
-
-![](../../img/installer-guide/mac-install-md/gib-done.png)
+![](../../img/installer-guide/mac-install-md/munki-dmg.png)
 
 Начиная отсюда, перейдите к [Настройке установщика](#настроика-установщика) чтобы закончить свою работу.
 
@@ -86,7 +58,7 @@
 
 * [Как получить старые версии macOS](https://support.apple.com/ru-ru/HT211683)
 
-On step 4, you'll see either `InstallOS.dmg` for Sierra or `InstallMacOSX.dmg` for El Capitan and older. Download your desired version and a .pkg file should be provided.
+Загрузите желаемую версию.
 
 В зависимости от того, на какой ОС вы находитесь, вы можете запустить этот скрипт и перейти к [Настройка установщика](#setting-up-the-installer), однако если вы получили эту ошибку:
 
@@ -267,7 +239,7 @@ sudo asr restore -source /Volumes/Mac\ OS\ X\ Install\ DVD  -target /Volumes/MyV
 
 * **Примечание**: Это может не соответствовать вашим настройками, так что измените соответствующим образом:
   * Измените `/Volumes/Mac\ OS\ X\ Install\ DVD` на то, как назван ваш смонтированный образ диска
-  * Измените `/Volumes/MyVolume` на то, как ваш USB назван
+  * Измените `/Volumes/MyVolume` на название вашего USB-накопителя
 
 Это может занять некоторое время, но когда вы закончите, вы можете переходить к [Настройке EFI окружения OpenCore](#настроика-efi-окружения-opencore)
   
@@ -316,6 +288,9 @@ sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstall
 Взято с сайта Apple: [Создание загружаемого установщика для macOS](https://support.apple.com/ru-ru/HT201372)
 
 ```sh
+# Big Sur
+sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
+
 # Catalina
 sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
 
