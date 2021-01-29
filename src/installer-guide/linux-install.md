@@ -11,7 +11,7 @@
 
 ## Скачивание macOS
 
-Теперь, чтобы начать, сначала cd в [папку macrecovery](https://github.com/acidanthera/OpenCorePkg/releases) и запустите одну из следующих команд:
+Для начала, cd в [папку macrecovery](https://github.com/acidanthera/OpenCorePkg/releases) и запустите одну из следующих команд:
 
 ![](../../img/installer-guide/legacy-mac-install-md/macrecovery.png)
 
