@@ -714,6 +714,7 @@ SmUUID:       DBB364D6-44B2-4A02-B922-AB4396F16DA8
 
 * VT-x
 * Above 4G decoding
+  * Примечание для BIOS новее 2020 г.: При включение Above4G - может стать доступной опция Resizable BAR Support на некоторых Z490 и более новых материнских платах. Убедитесь, что эта опция установлена в **Disabled** вместо Auto.
 * Hyper-Threading
 * Execute Disable Bit
 * EHCI/XHCI Hand-off
