@@ -27,7 +27,13 @@
 
 Теперь кое-что, что вы заметите это то, что она поставляется с кучей файлов в `Drivers` и `Tools` папках, большинство из них нам не нужно:
 
-* **Удалите всё из папки Drivers (кроме OpenRuntime.efi):**
+* **Оставьте в Drivers следующее** (если это нужно):
+
+| Драйвер | Статус | Описание |
+| :--- | :--- | :--- |
+| OpenUsbKbDxe.efi | <span style="color:#30BCD5"> Опционален </span> | Требуется для систем без UEFI (до 2012 г.) |
+| OpenPartitionDxe.efi | ^^ | Требуется для загрузки рекавери macOS 10.7-10.9 |
+| OpenRuntime.efi | <span style="color:red"> Необходим </span> | Требуется для правильной работы |
 
 ::: details Подробнее о предоставленных драйверах
 
@@ -36,29 +42,36 @@
 * CrScreenshotDxe.efi
   * Используется для создания скриншотов в UEFI, нам это не нужно
 * HiiDatabase.efi
-  * Используется для исправления поддержки графического интерфейса, как OpenShell.efi, на Sandy Bridge и старее
+  * Используется для исправления поддержки графического интерфейса как OpenShell.efi, на Sandy Bridge и старее
   * Не требуется для загрузки
 * NvmExpressDxe.efi
   * Используется на Haswell и старее, когда NVMe драйвер не встроен в прошивку
+  * Не используйте его, если не знаете, что делаете
 * OpenCanopy.efi
-  * Это опциональный графический интерфейс OpenCore, мы рассмотрим, как его настроить [После установки](https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html), поэтому удалите его пока что
+  * Это опциональный графический интерфейс OpenCore, мы рассмотрим, как его настроить [После установки](https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html), поэтому пока что удалите его
 * OpenHfsPlus.efi
   * Драйвер HFS Plus с открытым исходным кодом, довольно медленный, поэтому мы не рекомендуем его использовать, если вы не знаете, что делаете.
+* OpenPartitionDxe.efi
+  * Required to boot recovery on OS X 10.7 through 10.9
+    * Note: OpenDuet users(ie. without UEFI) will have this driver built-in, not requiring it
 * OpenUsbKbDxe.efi
-  * Используется для меню выбора (picker) OpenCore на **Legacy системах, работающих под управлением DuetPkg** [не рекомендуется и даже вредно на Ivy Bridge и новее](https://applelife.ru/threads/opencore-obsuzhdenie-i-ustanovka.2944066/page-176#post-856653)
+  * Используется для меню выбора OpenCore на **старых системах, работающих под управлением DuetPkg** [не рекомендуется и даже вредно на Ivy Bridge и новее](https://applelife.ru/threads/opencore-obsuzhdenie-i-ustanovka.2944066/page-176#post-856653)
 * Ps2KeyboardDxe.efi + Ps2MouseDxe.efi
-  * Довольно очевидно, когда это вам нужно, пользователям USB клавиатуры и мыши это не нужно
+  * Довольно очевидно, когда это вам нужно, пользователям USB-клавиатуры и мыши это не нужно
   * Напоминание: PS2 ≠ USB
 * UsbMouseDxe.efi
-  * Тоже самое, что и OpenUsbKbDxe; должна быть необходимость только на Legacy системах, работающих под управлением DuetPkg
+  * Тоже самое, что и с OpenUsbKbDxe; должно использоваться только на Legacy системах, работающих под управлением DuetPkg
 * XhciDxe.efi
   * Используется на Sandy Bridge и старее, когда XCHI драйвер не встроен в прошивку
   * Требуется только в том случае, если вы используете карту расширения USB 3.0 на старом компьютере
 
 :::
 
-* **Удалите всё из папки Tools (кроме OpenShell.efi):**
-  * Их слишком много, чтобы перечислить все, но рекомендуется оставить OpenShell.efi для решения проблем
+* **Оставьте в Tools следующее:**
+
+| Инструмент | Статус | Описание |
+| :--- | :--- | :--- |
+| OpenShell.efi | <span style="color:#30BCD5"> Опционален </span> | Рекомендуется для упрощения процесса отладки  |
 
 Почищенный EFI:
 

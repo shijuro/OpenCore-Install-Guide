@@ -1,6 +1,6 @@
 # Converting from Clover to OpenCore
 
-* Supported version: 0.6.5
+* Supported version: 0.6.6
 
 So you see the new fancy OpenCore bootloader and just dying to try it out, well you've come to the right place! Many things in Clover have feature parity with OpenCore but many do not, here we'll be going over what you can bring over and what you cannot.
 
@@ -78,9 +78,9 @@ By default OpenCore will inject SMBIOS data into all OSes, the reason for this i
 * This allows for proper multiboot support like with [BootCamp](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
 * Avoids edge cases where info is injected several times, commonly seen with Clover
 
-However, there are quirks in OpenCore that allow for SMBIOS injection to be macOS limited by patching where macOS reads SMBIOS info from. These quirks can break in the future and so we only recommend this option in the event of certain software breaking in other OSes. For best stability, please disable avoid
+However, there are quirks in OpenCore that allow for SMBIOS injection to be macOS limited by patching where macOS reads SMBIOS info from. These quirks can break in the future and so we only recommend this option in the event of certain software breaking in other OSes. For best stability, please avoid
 
 To enable macOS-only SMBIOS injection:
 
 * Kernel -> Quirks -> CustomSMBIOSGuid -> True
-* Platforminfo -> CustomSMBIOSMode -> Custom
+* PlatformInfo -> UpdateSMBIOSMode -> Custom

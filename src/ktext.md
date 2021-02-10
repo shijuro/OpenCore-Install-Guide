@@ -24,10 +24,10 @@
 
 Для большинства систем, вам понадобится только 2 `.efi` драйвера для работы:
 
-* [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi)
+* [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi)(<span style="color:red">Требуется</span>)
   * Нужен для просмотра HFS разделов(т.е., установщиков macOS и Recovery разделов/образов). **Не смешивайте с другими HFS драйверами**
   * Для Sandy Bridge и старее (а также младшие (low end) Ivy Bridge (i3 и Celeron)), см. legacy раздел ниже
-* [OpenRuntime.efi](https://github.com/acidanthera/OpenCorePkg/releases)
+* [OpenRuntime.efi](https://github.com/acidanthera/OpenCorePkg/releases)(<span style="color:red">Требуется</span>)
   * Замена [AptioMemoryFix.efi](https://github.com/acidanthera/AptioFixPkg), используется как расширение для OpenCore, чтобы помогать в патчинге boot.efi для исправления NVRAM и лучшего управления памятью.
   * Напоминаем, что это включено в OpenCorePkg, который мы скачали ранее
 
@@ -42,9 +42,10 @@
 * [HfsPlusLegacy.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlusLegacy.efi)
   * Legacy вариант HfsPlus, используемый для систем без поддержки RDRAND инструкций. Обычно встречается на Sandy Bridge и старее(а также младшие (low end) Ivy Bridge (i3 и Celeron))
   * Не смешивайте это с HfsPlus.efi, выберите одно или другое, в зависимости от вашего оборудования
-* [PartitionDxe](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/PartitionDxe.efi)
+* [OpenPartitionDxe](https://github.com/acidanthera/OpenCorePkg/releases)
   * Требуется для загрузки раздела восстановления (recovery) в OS X 10.7-10.9
-  * Для Sandy Bridge и старее(а также младшие (low end) Ivy Bridge (i3 и Celeron)), вы захотите использовать [PartitionDxeLegacy](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/PartitionDxeLegacy.efi) из-за отсутствия RDRAND инструкций.
+    * Этот файл идёт в комплекте с OpenCorePkg в EFI/OC/Drivers
+    * Примечание: Пользователи OpenDuet(т. е. без UEFI) будут иметь этот встроенный драйвер, он им не потребуется
   * Не требуется для OS X 10.10, Yosemite и новее
 
 Эти файлы должны быть помещены в папку Drivers в вашем EFI
@@ -55,8 +56,6 @@
 
 * [HfsPlus32](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus32.efi)
   * Альтернатива HfsPlusLegacy, но для 32-битных процессоров; не смешивайте это с другими HFS .efi драйверами
-* [PartitionDxe32](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/PartitionDxe32.efi)
-  * Альтернатива PartitionDxeLegacy, но для 32-битных процессоров; не смешивайте это с другими PartitionDxe .efi драйверами
 
 :::
 
@@ -76,11 +75,11 @@ Kext - это **k**ernel **ext**ension, вы можете думать что э
 
 Без двух ниже, система не загрузится:
 
-* [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases)
+* [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases)(<span style="color:red">Требуется</span>)
   * Эмулирует чип SMC, найденный на реальных маках, без этого macOS не загрузится
   * Альтернативой является FakeSMC, который может иметь более лучшую или более худшую поддержку, чаще всего используется на legacy оборудовании.
   * Требуется OS X 10.6 или новее
-* [Lilu](https://github.com/acidanthera/Lilu/releases)
+* [Lilu](https://github.com/acidanthera/Lilu/releases)(<span style="color:red">Требуется</span>)
   * Кекст, чтобы патчить многие процессы; требуется для AppleALC, WhateverGreen, VirtualSMC и многих других кекстов. Без Lilu, они не будут работать
   * Обратите внимание: Lilu и плагины к нему требуют OS X 10.8 и новее
   
@@ -116,7 +115,7 @@ Kext - это **k**ernel **ext**ension, вы можете думать что э
 
 ### Графика
 
-* [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases)
+* [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases)(<span style="color:red">Требуется</span>)
   * Используется для патчинга DRM, boardID, исправления фреймбуфера, и т.д., все графические процессоры выигрывают от этого кекста
   * Обратите внимание, что файл SSDT-PNLF.dsl требуется только для ноутбуков и моноблоков, см. [Начало работы с ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) для получения подробной информации
   * Требуется OS X 10.8 или новее

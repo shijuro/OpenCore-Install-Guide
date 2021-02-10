@@ -2,7 +2,7 @@
 
 Теперь, когда у нас есть все наши кексты(.kext), SSDT(.aml) и драйверы прошивки, ваш USB должен выглядеть примерно так:
 
-![](../../img/config/config-universal/almost-done.png)
+![Populated EFI folder](../../img/installer-guide/opencore-efi-md/populated-efi.png)
 
 * **Примечание**: Ваш USB **будет выглядеть по-другому**, у каждой системы разные требования.
 
@@ -45,6 +45,10 @@
 Когда всё сделано, вы увидите ваши SSDT, кексты и драйверы прошивки заполненными в config.plist:
 
 ![](../../img/config/config-universal/after-snapshot.png)
+
+* **Примечание:** Если у вас появится окно "Disable the following kexts with Duplicate CFBundleIdentifiers?", нажмите "Yes". Это делается для того, чтобы убедиться, что у вас не будут инжектироваться дублирующиеся кексты, поскольку некоторые кексты могут иметь одни и те же плагины(например, VoodooInput находящийся как в VoodooPS2, так и в VoodooI2C)
+
+![](../../img/config/config-universal/duplicate.png)
 
 Если вы хотите немного почистить файл, вы можете удалить записи `#WARNING`. Хотя они оставаясь там не вызывают проблем, поэтому это личное предпочтение.
 
