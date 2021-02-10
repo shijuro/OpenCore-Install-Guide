@@ -2,7 +2,7 @@
 
 | Поддержка | Версия |
 | :--- | :--- |
-| Поддерживаемая версия OpenCore | 0.6.5 |
+| Поддерживаемая версия OpenCore | 0.6.6 |
 | Начало поддержки в macOS | macOS 10.13, High Sierra |
 
 ## Отправная точка
@@ -292,6 +292,8 @@ TL;DR, удалите все PciRoot здесь, поскольку мы не б
   * Позволяет читать логи паники ядра, когда произошла паника ядра
 * **PowerTimeoutKernelPanic**: YES
   * Помогает устранить паники ядра, связанные с изменениями питания в драйверах Apple в macOS Catalina, особенно с цифровым звуком.
+* **SetApfsTrimTimeout**: `-1`
+  * Устанавливает таймаут Trim в микросекундах для SSD с файловой системой APFS. Применимо только для macOS 10.14 и новее с проблемными SSD.
 * **XhciPortLimit**: YES
   * Фактически, это исправление ограничения на 15 портов, не надейтесь на это, как на гарантированное решение для исправления USB. Более подходящее решение для AMD можно найти здесь: [AMD USB Mapping](https://dortania.github.io/OpenCore-Post-Install/usb/)
 :::
@@ -393,8 +395,6 @@ TL;DR, удалите все PciRoot здесь, поскольку мы не б
   * Включает аутентифицированный перезапуск для FileVault 2, поэтому пароль не требуется при перезагрузке. Может рассматриваться как угроза безопасности, поэтому это необязательно
 * **BlacklistAppleUpdate**: YES
   * Используется для блокировки обновлений прошивки, используется как дополнительный уровень защиты, так как macOS Big Sur больше не использует переменную `run-efi-updater`
-* **BootProtect**: None
-  * Позволяет использовать Bootstrap.efi внутри папки EFI/OC/Bootstrap, вместо BOOTx64.efi, полезно для тех, кто хочет загружаться с помощью rEFInd или хочет избежать перезаписи BOOTx64.efi от Windows. Правильное использование этих квирков описано здесь: [Использование Bootstrap.efi](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html)
 * **DmgLoading**: Signed
   * Обеспечивает загрузку только подписанных DMG
 * **ExposeSensitiveData**: `6`
@@ -406,7 +406,7 @@ TL;DR, удалите все PciRoot здесь, поскольку мы не б
   * `0` позволяет вам видеть все доступные накопители, пожалуйста обратитесь к разделу [Безопасность](https://dortania.github.io/OpenCore-Post-Install/universal/security.html) для получения дополнительной информации. **USB устройства не будут загружаться со значением по умолчанию (default)**
 * **SecureBootModel**: Default
   * Включает функциональность Secure Boot от Apple в macOS, обратитесь к разделу [Безопасность](https://dortania.github.io/OpenCore-Post-Install/universal/security.html) для получения дополнительной информации.
-  * Примечание: Пользователи могут обнаружить, что обновление OpenCore на уже установленной системе может привести к ранним сбоям загрузки. Чтобы решить это, см. здесь: [Застрял на OCB: LoadImage failed - Security Violation](/troubleshooting/extended/kernel-issues.md#stuck-on-ocb-loadimage-failed-security-violation)
+  * Примечание: Пользователи могут обнаружить, что обновление OpenCore на уже установленной системе может привести к ранним сбоям загрузки. Чтобы решить это, см. здесь: [Зависает на OCB: LoadImage failed - Security Violation](/troubleshooting/extended/kernel-issues.md#stuck-on-ocb-loadimage-failed-security-violation)
 
 :::
 
@@ -583,14 +583,17 @@ SmUUID:       DEA17B2D-2F9F-4955-B266-A74C47678AD3
 * **AdviseWindows**: NO
   * Используется тогда, когда EFI раздел не является первым на диске Windows
 
-* **SystemMemoryStatus**: Auto
-  * Устанавливает, распаяна ли память или нет в информацию SMBIOS, чисто косметически, поэтому рекомендуем `Auto`
+* **MaxBIOSVersion**: NO
+  * Устанавливает максимальную версию BIOS для предотвращения обновления прошивки в Big Sur и выше, в основном применимо для настоящих Mac.
   
 * **ProcessorType**: `0`
   * Установите значение `0` для автоматического определения типа процессора, однако если хотите можно изменить это значение. См. [AppleSmBios.h](https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Apple/IndustryStandard/AppleSmBios.h) для возможных значений
 
 * **SpoofVendor**: YES
   * Меняет поле Vendor на Acidanthera, как правило, Apple как Vendor небезопасно использовать в большинстве случаев
+
+* **SystemMemoryStatus**: Auto
+  * Устанавливает, распаяна ли память или нет в информацию SMBIOS, чисто косметически, поэтому рекомендуем `Auto`
 
 * **UpdateDataHub**: YES
   * Обновляет Data Hub поля
@@ -658,6 +661,10 @@ SmUUID:       DEA17B2D-2F9F-4955-B266-A74C47678AD3
 :::
 
 ::: details Более подробная информация
+
+* **DisableSecurityPolicy**: NO
+  * Отключает платформенную политику безопасности в прошивке. Рекомендуется для прошивок, в которых отключение Secure Boot не позволяет загружать сторонние драйверы прошивки.
+  * Если у вас устройство серии Microsoft Surface, рекомендуем включить эту опцию
 
 * **RequestBootVarRouting**: YES
   * Перенаправляет AptioMemoryFix из `EFI_GLOBAL_VARIABLE_GUID` в `OC_VENDOR_VARIABLE_GUID`. Необходимо в тех случаях, когда прошивка пытается удалить загрузочную запись, и рекомендуется включать на всех системах для правильно установки обновлений, работы панели управления загрузочным диском (Startup Disk), т.д.

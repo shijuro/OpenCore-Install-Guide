@@ -1,6 +1,6 @@
 # Проблемы с загрузкой OpenCore
 
-* Поддерживаемая версия: 0.6.5
+* Поддерживаемая версия: 0.6.6
 
 Проблемы связанные с начальной загрузкой самого USB-накопителя до того, как вы решите загрузить установщик macOS
 
@@ -17,6 +17,7 @@
 * [SSDT не добавляются](#ssdt-не-добавляются)
 * [При загрузке OpenCore - происходит перезагрузка в BIOS](#при-загрузке-opencore-происходит-перезагрузка-в-bios)
 * [OCABC: Incompatible OpenRuntime r4, require r10](#ocabc-incompatible-openruntime-r4-require-r10)
+* [Failed to open OpenCore image - Access Denied](#failed-to-open-opencore-image-access-denied)
 
 ## Зависает на чёрном экране перед появлением меню выбора
 
@@ -169,3 +170,7 @@
 Устаревший OpenRuntime.efi, убедитесь что BOOTx64.efi, OpenCore.efi и OpenRuntime **из одной и той же сборки**. Несоответствие приведет к поломке загрузки
 
 * **Примечание**: FwRuntimeServices был переименован OpenRuntime с версии 0.5.7 и новее
+
+## Failed to open OpenCore image - Access Denied
+
+На новых прошивках устройств Microsoft Surface, загрузка OpenCore приводит к нарушению безопасности, даже когда отключен Secure Boot. Чтобы решить эту проблему, включите `UEFI -> Quirks -> DisableSecurityPolicy` в своём config.plist. Более подробно см. здесь: [Failed to open OpenCore image - Access Denied #1446](https://github.com/acidanthera/bugtracker/issues/1446)
