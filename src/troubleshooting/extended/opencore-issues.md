@@ -18,6 +18,7 @@
 * [При загрузке OpenCore - происходит перезагрузка в BIOS](#при-загрузке-opencore-происходит-перезагрузка-в-bios)
 * [OCABC: Incompatible OpenRuntime r4, require r10](#ocabc-incompatible-openruntime-r4-require-r10)
 * [Failed to open OpenCore image - Access Denied](#failed-to-open-opencore-image-access-denied)
+* [OC: Failed to find SB model disable halting on critical error](#oc-failed-to-find-sb-model-disable-halting-on-critical-error)
 
 ## Зависает на чёрном экране перед появлением меню выбора
 
@@ -174,3 +175,7 @@
 ## Failed to open OpenCore image - Access Denied
 
 На новых прошивках устройств Microsoft Surface, загрузка OpenCore приводит к нарушению безопасности, даже когда отключен Secure Boot. Чтобы решить эту проблему, включите `UEFI -> Quirks -> DisableSecurityPolicy` в своём config.plist. Более подробно см. здесь: [Failed to open OpenCore image - Access Denied #1446](https://github.com/acidanthera/bugtracker/issues/1446)
+
+## OC: Failed to find SB model disable halting on critical error
+
+Это опечатка. Убедитесь, что `Misc -> Secuirty -> SecureBootModel` в вашем config.plist установлен в Disable**d**
