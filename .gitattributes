@@ -1,0 +1,8 @@
+* text=auto
+
+# Ignore files in assets and vuepress directories
+assets/** linguist-detectable=false
+src/.vuepress/** linguist-detectable=false
+# Detect Markdown files
+src/*.md linguist-detectable
+src/**/*.md linguist-detectable
