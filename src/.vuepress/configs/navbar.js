@@ -15,6 +15,10 @@ const navbar = [
             link: 'https://dortania.github.io/OpenCore-Post-Install/'
         },
         {
+            text: 'OpenCore Multiboot',
+            link: 'https://dortania.github.io/OpenCore-Multiboot/'
+        },
+        {
             text: 'GPU Buyers Guide',
             link: 'https://dortania.github.io/GPU-Buyers-Guide/'
         },

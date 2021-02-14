@@ -3,7 +3,7 @@
 Теперь, когда вы закончили настройку OpenCore, вы наконец-то можете загрузиться, главное иметь в виду:
 
 * Включите настройки BIOS оптимальные для macOS
-* Прочитайте [Руководство по Multiboot (на английском)](https://hackintosh-multiboot.gitbook.io/hackintosh-multiboot/) и взгляните на специфичные квирки в разделе [Multiboot](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html#prerequisites)
+* Прочитайте [руководство по Multiboot OpenCore (на английском)](https://hackintosh-multiboot.gitbook.io/hackintosh-multiboot/) и раздел [настройка LauncherOption](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html#prerequisites)
   * В основном актуально для тех, кто использует один диск для нескольких ОС
 * Скопируйте страницу [Устранение общих неполадок](../troubleshooting/troubleshooting.md)
 * Прочитайте [Процесс загрузки macOS](../troubleshooting/boot.md)

@@ -167,7 +167,8 @@ const sidebar = [{
             title: 'Multiboot',
             collapsable: true,
             children: [
-                ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap', 'Настройка Bootstrap.efi'],
+                ['https://dortania.github.io/OpenCore-Multiboot/', 'OpenCore Multiboot'],
+                ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap', 'Настройка LauncherOption'],
                 ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp', 'Установка BootCamp'],
             ]
         },
