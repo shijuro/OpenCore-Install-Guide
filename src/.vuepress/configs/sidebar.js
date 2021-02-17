@@ -4,6 +4,7 @@ const sidebar = [{
     sidebarDepth: 1,
     children: [
         'prerequisites',
+        'macos-limits',
         'find-hardware',
         'terminology',
         'why-oc',
@@ -27,7 +28,7 @@ const sidebar = [{
     },
         '/installer-guide/opencore-efi',
         'ktext',
-    ['https://dortania.github.io/Getting-Started-With-ACPI/', 'Начало работы с ACPI (на английском)'],
+        ['https://dortania.github.io/Getting-Started-With-ACPI/', 'Начало работы с ACPI (на английском)'],
         '/config.plist/',
     ]
 },
