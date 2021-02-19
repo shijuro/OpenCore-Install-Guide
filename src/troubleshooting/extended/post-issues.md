@@ -244,7 +244,7 @@ SIP или более правильно System Intergity Protection - это т
 
 **Примечание**: Отключение SIP в OpenCore довольно сильно отличается от Clover, в особенности, NVRAM переменные не будут перезаписаны, даже если это явно указано в разделе `Delete`. Поэтому, если вы однажды устанавливали значение SIP через OpenCore или macOS, вы должны переопределить переменную:
 
-* `NVRAM -> Block -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> csr-active-config`
+* `NVRAM -> Delete -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> csr-active-config`
   
 ![](../../../img/troubleshooting/troubleshooting-md/sip.png)
 

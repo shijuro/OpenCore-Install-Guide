@@ -30,7 +30,7 @@
 
 Всё ещё не работает? Хорошее время для больших пушек. Мы принудительно удалим это свойство и позволим OpenCore восстановить его:
 
-`NVRAM -> Block -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> Item 0`, установите Type `String` и Value `prev-lang:kbd`
+`NVRAM -> Delete -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> Item 0`, установите Type `String` и Value `prev-lang:kbd`
 
 ![](../../../img/troubleshooting/troubleshooting-md/lang.png)
 

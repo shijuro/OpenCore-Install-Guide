@@ -177,7 +177,7 @@
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
-| device-id | Data | 3A1E0000 |
+| device-id | Data | 3A1C0000 |
 
 :::
 

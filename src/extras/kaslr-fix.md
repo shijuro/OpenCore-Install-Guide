@@ -2,7 +2,9 @@
 
 * Поддерживаемая версия: 0.6.6
 
-Этот раздел предназначен для пользователей, которые хотят понять и исправить ошибки "Couldn't allocate runtime area". Чаще всего это встречается на Z390, X99 и X299. Этот раздел также поддерживает Clover, поскольку информация для него также будет полезна.
+Этот раздел предназначен для пользователей, которые хотят понять и исправить ошибки "Couldn't allocate runtime area". Чаще всего это встречается на Z390, X99 и X299.
+
+* Примечание: Clover больше не поддерживается в этом руководстве, поэтому требуется OpenCore
 
 ## Что же такое KASLR?
 
@@ -37,24 +39,12 @@ panic(cpu 6 caller 0xffffff801fc057ba): a freed zone element has been modified i
 
 ## Так как же мне это исправить?
 
-Реальное решение этой проблемы довольно простое, процесс одинаков для пользователей Clover и OpenCore. Что вам понадобится:
+Реальное решение этой проблемы довольно простое. Что вам понадобится:
 
-* **Пользователям Clover**:
-  * Clover Shell(у большинства пользователей он уже есть, обычно называется shell64.efi или как-то по-другому)
-    * Это можно найти в `EFI/CLOVER/tools`
-    * Если у вас его нет, вы можете получить его из [CLOVERV2-xxxx.zip](https://github.com/CloverHackyColor/CloverBootloader/releases)
-  * [OcQuirks](https://github.com/CloverHackyColor/CloverBootloader/releases/latest) начиная с Clover v5120, скачав CloverV2-xxxx.zip, он будет содержать его по пути /CloverV2/EFI/CLOVER/drivers/off/UEFI/MemoryFix/OcQuirks.efi, он должен быть вкупе с OpenRuntime.efi, который предоставляется по такому же пути
-(Не смешивайте AptioFix'ы и не используйте OsxAptioFixDrvX или AptioMemoryFix, в этом руководстве поддерживается только OcQuirks)
-    * Убедитесь, что это находится в папке `EFI/CLOVER/drivers/UEFI`
-  * OpenRuntime.efi(Идёт в комплекте с CloverV2)
-    * Убедитесь, что это находится в папке `EFI/CLOVER/drivers/UEFI`
-  * ~~OcQuirks.plist~~(Входит в config.plist от Clover, в последнем разедел после `SystemParameters`). Чтобы изменить OpenRuntime квирки, проверьте в конце config-sample.plist из CloverV2-xxxx.zip, поскольку Slice объединил OcQuirks.plist от ReddestDream в config.plist Clover'а
+* [OpenRuntime](https://github.com/acidanthera/OpenCorePkg/releases)
+* [OpenShell](https://github.com/acidanthera/OpenCorePkg/releases)(Не забудьте включить это в разделе `Root -> Misc -> Tools`)
 
-* **Пользователям OpenCore**:
-  * [OpenRuntime](https://github.com/acidanthera/OpenCorePkg/releases)
-  * [OpenShell](https://github.com/acidanthera/OpenCorePkg/releases)(Не забудьте включить это в разделе `Root -> Misc -> Tools`)
-
-И нам также нужно настроить наш config.plist -> Booter(для OpenCore) или OcQuirks.plist(для Clover):
+И также нам нужно настроить наш config.plist -> Booter:
 
 * **AvoidRuntimeDefrag**: YES
   * Исправляет рантайм сервисы UEFI, такие как дата, время, NVRAM, управление питанием, т.д.
