@@ -232,6 +232,9 @@
   * В связи с этим же, Samsung 970 EVO Plus NVMe SSD имел такую же проблему, но она была починена в обновлении прошивки; получить обновление (в Windows через Samsung Magician или загрузочный ISO) [здесь](https://www.samsung.com/semiconductor/minisite/ssd/download/tools/).
   * Также следует отметить, что ноутбуки которые используют [Intel Optane Memory](https://www.intel.com/content/www/us/en/architecture-and-technology/optane-memory.html) или [Micron 3D XPoint](https://www.micron.com/products/advanced-solutions/3d-xpoint-technology) для ускорения жёсткого диска - не поддерживаются в macOS. Некоторые пользователи рассказали об удачном запуске памяти в Catalina, даже с поддержкой чтения и записи, но мы настоятельно рекомендуем убрать этот накопитель, чтобы исключить любые потенциальные проблемы при загрузке.
 
+* **Intel 600p**
+  * Не смотря на то, что с него можно загрузиться, помните о том, что эта модель может вызвать множество проблем. [Any fix for Intel 600p NVMe Drive? #1286](https://github.com/acidanthera/bugtracker/issues/1286)
+
 ## Проводная сеть
 
 Практически все проводные сетевые адаптеры в той или иной форме поддерживаются в macOS, ибо с помощью встроенных драйверов, либо с помощью кекстами, созданных сообществом. Основные исключения:

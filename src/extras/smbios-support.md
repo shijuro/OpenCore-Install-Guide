@@ -36,7 +36,7 @@
 | Macmini7,1+ |
 | iMac14,x+ |
 | iMacPro1,1 |
-| MacPro6,1+ |
+| MacPro7,1+ |
 
 :::
 

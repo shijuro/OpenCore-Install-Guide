@@ -87,8 +87,8 @@ SMBIOS поддерживаемые в macOS Big Sur:
   * Возможный обходной путь состоит в инжекции патченного IO80211Family, подробнее см. здесь: [Патчи IO80211](https://github.com/khronokernel/IO80211-Patches)
 * Некоторые SATA-контроллеры
   * По каким-то причинам, Apple удалила класс AppleIntelPchSeriesAHCI из AppleAHCIPort.kext. Из-за полного удаления класса, попытка подмены на другой ID (обычно выполняется SATA-unsupported.kext) может закончиться неудачей для многих и создать нестабильность для других.
-  * Частичное исправление - заблокировать AppleAHCIPort.kext от Big Sur и инжектировать версию от Catalina с пропатченными конфликтующими символами. Вы можете найти кекст здесь: [Патченный AppleAHCIPort.kext от Catalina](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip)
-  * Это будет работать как в Catalina, так и в Big Sur, поэтому вы можете удалить SATA-unsupported, если хотите. Однако мы рекомендуем установить для MinKernel значение 20.0.0, чтобы избежать любых потенциальных проблем.
+  * Частичное решение: инжектировать версию от Catalina с пропатченными конфликтующими символами. Вы можете найти кекст здесь: [Патченный AppleAHCIPort.kext от Catalina](https://github.com/dortania/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip)
+  * Мы рекомендуем установить для MinKernel значение 20.0.0 для кекста `CtlnaAHCIPort.kext` во избежание любых потенциальных проблем. Этот способ будет работать как в Catalina, так и в Big Sur, поэтому если хотите, вы можете удалить SATA-unsupported.
 
 Другие заметные изменения:
 

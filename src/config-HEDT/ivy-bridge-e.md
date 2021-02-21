@@ -27,7 +27,7 @@
 
 ## ACPI
 
-![ACPI](../../img/config/config-universal/aptio-iv-acpi.png)
+![](../../img/config/config-legacy/penryn-acpi.png)
 
 ### Add
 
@@ -39,7 +39,6 @@
 
 | Требумые_SSDT | Описание |
 | :--- | :--- |
-| **[SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/)** | Позволяет нативно управлять питанием процессора на Ivy Bridge-E и новее, см. [Руководство по началу работы с ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) для получения дополнительной информации. **Не поддерживается на Sandy Bridge-E** |
 | **[SSDT-EC](https://dortania.github.io/Getting-Started-With-ACPI/)** | Исправления для встроенных контроллеров, см. [Руководство по началу работы с ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) для получения дополнительной информации. |
 | **[SSDT-UNC](https://dortania.github.io/Getting-Started-With-ACPI/)** | Требуется для всех пользователей Big Sur, чтобы убедиться, что их UNC-устройства совместимы, см. [Руководство по началу работы с ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) для получения дополнительной информации. |
 
@@ -105,7 +104,7 @@ TL;DR, удалите все PciRoot здесь, поскольку мы не б
 
 ## Kernel
 
-![](../../img/config/config-universal/kernel-legacy-XCPM-HEDT.png)
+![](../../img/config/config-universal/kernel-legacy-HEDT.png)
 
 ### Add
 
@@ -164,7 +163,7 @@ TL;DR, удалите все PciRoot здесь, поскольку мы не б
 
 ### Emulate
 
-Требуется для спуфинга (подмены) неподдерживаемых процессоров, к счастью, Ivy Bridge-E официально поддерживается, поэтому патчинг не требуется.
+Требуется для спуфинга (подмены) неподдерживаемых процессоров, к счастью, Sandy и Ivy Bridge-E официально поддерживаются, поэтому патчинг не требуется.
 
 ### Force
 
@@ -188,26 +187,25 @@ TL;DR, удалите все PciRoot здесь, поскольку мы не б
 
 | Quirk | Enabled | Комментарии |
 | :--- | :--- | :--- |
-| AppleCpuPmCfgLock | NO | Требуется, если вы используете 10.10 или старее, и не можете отключить `CFG-Lock` в BIOS, **также требуется для Sandy Bridge-E** |
-| AppleXcpmCfgLock | YES | Не требуется, если `CFG-Lock` отключен в BIOS |
-| AppleXcpmExtraMsrs | YES | |
+| AppleCpuPmCfgLock | NO | Не требуется, если `CFG-Lock` отключен в BIOS |
 | DisableIOMapper | YES | Не требуется, если `VT-D` отключен в BIOS |
 | LapicKernelPanic | NO | Компьютеры HP нуждаются в этом квирке |
 | PanicNoKextDump | YES | |
 | PowerTimeoutKernelPanic | YES | |
-| XhciPortLimit | YES | |
+| XhciPortLimit | YES | Вы можете это отключить, если на вашей плате нет USB 3.0 |
 
 :::
 
 ::: details Более подробная информация
 
-* **AppleCpuPmCfgLock**: NO
+* **AppleCpuPmCfgLock**: YES
   * Требуется только, когда CFG-Lock нельзя отключить в BIOS
-  * Применимо только для Sandy Bridge-E и старее
+  * Применимо только для Ivy Bridge и старее
     * Примечание: Broadwell и старее требуют этого при запуске 10.10 или старее
-* **AppleXcpmCfgLock**: YES
+* **AppleXcpmCfgLock**: NO
   * Требуется только, когда CFG-Lock нельзя отключить в BIOS
-  * Применимо только для Ivy Bridge-E и новее
+  * Применимо только для Haswell и новее
+    * Примечание: Ivy Bridge-E также включен, поскольку он поддерживает XCPM
 * **AppleXcpmExtraMsrs**: YES
   * Отключает множественный доступ к MSR, необходимый для неподдерживаемых процессоров, таких как Pentium и многих Xeon. Требуется для Broadwell-E и ниже
 * **CustomSMBIOSGuid**: NO

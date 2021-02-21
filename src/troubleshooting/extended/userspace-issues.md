@@ -8,6 +8,7 @@
 * [Установщик macOS поврежден](#установщик-macos-поврежден)
 * [Зависает на или рядом с `IOConsoleUsers: gIOScreenLock...`](#зависает-на-или-рядом-с-ioconsoleusers-gioscreenlock-giolockstate-3)
 * [Скремблированный экран на ноутбуках](#скремблированныи-экран-на-ноутбуках)
+* [Черный экран после `IOConsoleUsers: gIOScreenLock...` на ноутбуках и моноблоках](#черныи-экран-после-ioconsoleusers-gioscreenlock-на-ноутбуках-и-моноблоках)
 * [Черный экран после `IOConsoleUsers: gIOScreenLock...` на Navi](#черныи-экран-после-ioconsoleusers-gioscreenlock-на-navi)
 * [Зависает в установщике macOS по прошествию 30 секунд](#зависает-в-установщике-macos-по-прошествию-30-секунд)
 * [Перезагрузка на Buldozer или Jaguar после экрана «Данные и Конфиденциальность» (Data & Privacy)](#перезагрузка-на-buldozer-или-jaguar-после-экрана-«данные-и-конфиденциальность»-data-privacy)
@@ -68,6 +69,17 @@ date 0901000019
 * Примечание от переводчика: Скремблированный экран (англ. - Scrambled Screen) - экран, у которого вместо изображения помехи.
 
 Включите CSM в настройках UEFI. Это может выглядить как "Boot legacy ROMs" или другие legacy настройки.
+
+## Черный экран после `IOConsoleUsers: gIOScreenLock...` на ноутбуках и моноблоках
+
+Убедитесь в следующем:
+
+* SSDT-PNLF установлен(т. е. находится в EFI/OC/ACPI, а также в config.plist -> ACPI -> Add)
+* Свойства iGPU были правильно настроены в `DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0)`
+* На ноутбуках с Coffee Lake и новее, добавьте `-igfxblr` в ваши boot-args
+  * В качестве альтернативы, вы можете добавить `enable-backlight-registers-fix | Data | 01000000` в `PciRoot(0x0)/Pci(0x2,0x0)`
+
+Кроме того, гляньте на проблемы, упомянутые в разделе [Зависает на или рядом с `IOConsoleUsers: gIOScreenLock...`](#зависает-на-или-рядом-с-ioconsoleusers-gioscreenlock-giolockstate-3)
 
 ## Черный экран после `IOConsoleUsers: gIOScreenLock...` на Navi
 

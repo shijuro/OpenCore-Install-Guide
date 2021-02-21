@@ -213,7 +213,6 @@ TL;DR, удалите все PciRoot здесь, поскольку мы не б
 | Quirk | Enabled | Комментарии |
 | :--- | :--- | :--- |
 | AppleCpuPmCfgLock | YES | Не требуется, если `CFG-Lock` отключен в BIOS |
-| AppleXcpmExtraMsrs | YES | |
 | DisableIOMapper | YES | Не требуется, если `VT-D` отключен в BIOS |
 | LapicKernelPanic | NO | Компьютеры HP нуждаются в этом квирке |
 | PanicNoKextDump | YES | |
