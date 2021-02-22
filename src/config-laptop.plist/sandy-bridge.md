@@ -124,10 +124,14 @@
 
 * **AvoidRuntimeDefrag**: YES
   * Исправляет рантайм сервисы UEFI, такие как дата, время, NVRAM, управление питанием, т.д.
+* **EnableSafeModeSlide**: YES
+  * Позволяет использовать Slide переменные в безопасном режиме.
 * **EnableWriteUnprotector**: YES
   * Нужен для снятия защиты от записи CR0 регистра.
+* **ProvideCustomSlide**: YES
+  * Используется для вычисления значения Slide переменной. Необходимость этого квирка определяется сообщением `OCABC: Only N/256 slide values are usable!` в дебаг логах. Если сообщение `OCABC: All slides are usable! You can disable ProvideCustomSlide!` присутствует в вашем логе, вы можете отключить `ProvideCustomSlide`.
 * **SetupVirtualMap**: YES
-  * Исправляет вызовы SetVirtualAddresses на виртуальные адреса, требуется для плат Gigabyte для устранения ранних паник ядра
+  * Исправляет вызовы SetVirtualAddresses на виртуальные адреса, требуется для плат Gigabyte для устранения ранних паник ядра.
   
 :::
 

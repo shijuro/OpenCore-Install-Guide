@@ -108,19 +108,23 @@
 * **AvoidRuntimeDefrag**: YES
   * Исправляет рантайм сервисы UEFI, такие как дата, время, NVRAM, управление питанием, т.д.
 * **DevirtualiseMmio**: YES
-  * Уменьшает объем Stolen памяти, расширяет возможные значения для `slide=N`, и очень полезен при устранении проблем с выделением памяти (Memory Allocation) на Z390. Требуется также `ProtectUefiServices` на IceLake и Z390 Coffee Lake
+  * Уменьшает объем Stolen памяти, расширяет возможные значения для `slide=N`, и очень полезен при устранении проблем с выделением памяти (Memory Allocation) на Z390. Требуется также `ProtectUefiServices` на IceLake и Z390 Coffee Lake.
+* **EnableSafeModeSlide**: YES
+  * Позволяет использовать Slide переменные в безопасном режиме.
 * **EnableWriteUnprotector**: NO
   * Этот квирк и RebuildAppleMemoryMap обычно конфликтуют, рекомендуется включить последнее на новых платформах и отключить эту запись.
-  * Однако, из-за проблем с OEM-производителями не использующие последнии сборки EDKII, вы можете обнаружить, что комбинация выше приводит к сбоям ранней загрузки. Это происходит из-за отсутствующего `MEMORY_ATTRIBUTE_TABLE`, и поэтому мы рекомендуем отключить RebuildAppleMemoryMap и включить EnableWriteUnprotector. Подробнее можно прочитать в [разделе решения проблем](/troubleshooting/extended/kernel-issues.md#stuck-on-eb-log-exitbs-start)
+  * Однако, из-за проблем с OEM-производителями не использующие последнии сборки EDKII, вы можете обнаружить, что комбинация выше приводит к сбоям ранней загрузки. Это происходит из-за отсутствующего `MEMORY_ATTRIBUTE_TABLE`, и поэтому мы рекомендуем отключить RebuildAppleMemoryMap и включить EnableWriteUnprotector. Подробнее можно прочитать в [разделе решения проблем](/troubleshooting/extended/kernel-issues.md#stuck-on-eb-log-exitbs-start).
 * **ProtectUefiServices**: NO
-  * Защищает UEFI сервисы от переопределения прошивкой, в основном актуально для виртуальных машин, Icelake и Z390 систем
-  * Если у вас Z390 - **включите этот квирк**
+  * Защищает UEFI сервисы от переопределения прошивкой, в основном актуально для виртуальных машин, Icelake и Z390 систем.
+  * Если у вас Z390 - **включите этот квирк**.
+* **ProvideCustomSlide**: YES
+  * Используется для вычисления значения Slide переменной. Необходимость этого квирка определяется сообщением `OCABC: Only N/256 slide values are usable!` в дебаг логах. Если сообщение `OCABC: All slides are usable! You can disable ProvideCustomSlide!` присутствует в вашем логе, вы можете отключить `ProvideCustomSlide`.
 * **RebuildAppleMemoryMap**: YES
-  * Создает Memory Map совместимую с macOS, может сломаться с некоторыми OEM прошивками ноутбуков, поэтому если вы получили сбой ранней загрузки - отключите это
+  * Создает Memory Map совместимую с macOS, может сломаться с некоторыми OEM прошивками ноутбуков, поэтому если вы получили сбой ранней загрузки - отключите это.
 * **SetupVirtualMap**: YES
-  * Исправляет вызовы SetVirtualAddresses на виртуальные адреса, может вызвать раннюю панику ядра на Ice Lake
+  * Исправляет вызовы SetVirtualAddresses на виртуальные адреса, может вызвать раннюю панику ядра на Ice Lake.
 * **SyncRuntimePermissions**: YES
-  * Исправляет согласование с MAT таблицами и требуется для загрузки Windows и Linux с MAT таблицами, также рекомендуется для macOS. В основном актуально для пользователей RebuildAppleMemoryMap
+  * Исправляет согласование с MAT таблицами и требуется для загрузки Windows и Linux с MAT таблицами, также рекомендуется для macOS. В основном актуально для пользователей RebuildAppleMemoryMap.
 
 :::
 
