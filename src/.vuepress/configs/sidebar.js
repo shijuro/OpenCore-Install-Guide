@@ -118,6 +118,7 @@ const sidebar = [{
         },
         '/troubleshooting/debug',
         '/troubleshooting/boot',
+        '/troubleshooting/kernel-debugging',
     ]
 },
 {
