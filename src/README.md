@@ -7,7 +7,7 @@ actionLink: prerequisites.md
 
 meta:
 - name: description
-  content: Текущая поддерживаемая версия 0.6.6
+  content: Текущая поддерживаемая версия 0.6.7
 ---
 
 # Что такое OpenCore и для кого это руководство?

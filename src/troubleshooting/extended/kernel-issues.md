@@ -1,6 +1,6 @@
 # Проблемы с ядром
 
-* Поддерживаемая версия: 0.6.6
+* Поддерживаемая версия: 0.6.7
 
 Проблемы связанны от начала загрузки установщика macOS до появления графического интерфейса установщика.
 
@@ -25,6 +25,7 @@
 * [Паника ядра на `Cannot perform kext summary`](#паника-ядра-на-cannot-perform-kext-summary)
 * [Паника ядра на `AppleIntelMCEReporter`](#паника-ядра-на-appleintelmcereporter)
 * [Паника ядра на `AppleIntelCPUPowerManagement`](#паника-ядра-на-appleintelcpupowermanagement)
+* [Kernel Panic `AppleACPIPlatform` in 10.13](#паника-ядра-на-appleacpiplatform-в-10-13)
 * [Клавиатура работает, а трекпад - нет](#клавиатура-работает-а-трекпад-нет)
 * [`kextd stall[0]: AppleACPICPU`](#kextd-stall-0-appleacpicpu)
 * [Паника ядра на AppleIntelI210Ethernet](#паника-ядра-на-appleinteli210ethernet)
@@ -550,6 +551,12 @@ Skip: 0
 | Replace | Data | A40A0FA3A3A3A3A3 |
 
 :::
+
+## Паника ядра на `AppleACPIPlatform` в 10.13
+
+![](../../../img/troubleshooting/troubleshooting-md/KA5UOGV.png)
+
+macOS 10.13 (High Sierra) более строгая с ACPI таблицами. [В частности, ошибка с обработкой заголовков](https://alextjam.es/debugging-appleacpiplatform/). Чтобы решить эту проблему, включите `NormalizeHeaders` в ACPI -> Quirks вашего config.plist
 
 ## macOS зависает перед входом в систему
 

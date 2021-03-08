@@ -2,7 +2,7 @@
 
 | Поддержка | Версия |
 | :--- | :--- |
-| Поддерживаемая версия OpenCore | 0.6.6 |
+| Поддерживаемая версия OpenCore | 0.6.7 |
 | Начало поддержки в macOS ([Coffee Lake](https://en.wikipedia.org/wiki/Coffee_Lake)) | macOS 10.13, High Sierra |
 | Начало поддержки в macOS ([Whiskey Lake](https://en.wikipedia.org/wiki/Whiskey_Lake_(microarchitecture))) | macOS 10.14.1, Mojave |
 

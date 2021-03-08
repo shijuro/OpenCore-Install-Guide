@@ -1,6 +1,6 @@
 # Послеустановочные проблемы
 
-* Поддерживаемая версия: 0.6.6
+* Поддерживаемая версия: 0.6.7
 
 Проблемы, связанные с macOS после правильной установки.
 
@@ -102,6 +102,8 @@ External (_SB_.PCI0.LPCB.PS2K, DeviceObj) <- Переименуйте это
 Следуйте следующему руководству:
 
 * [Исправления ошибок памяти на MacPro7,1](https://dortania.github.io/OpenCore-Post-Install/universal/memory.html)
+
+Тем, кто просто хочет отключить уведомление (а не саму ошибку), мы рекомендуем установить [RestrictEvents](https://github.com/acidanthera/RestrictEvents/releases).
 
 ## Вылетают приложения на AMD
 
