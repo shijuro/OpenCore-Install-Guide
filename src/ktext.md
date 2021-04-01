@@ -145,10 +145,10 @@ Kext - это **k**ernel **ext**ension, вы можете думать что э
 
 * [IntelMausi](https://github.com/acidanthera/IntelMausi/releases)
   * Для большинства сетевых карт Intel, чипсеты I211, будут нуждаться в кексте SmallTreeIntel82576
-  * Официально поддерживаются сетевые карты Intel 82578, 82579, i217, i218 и i219
+  * Официально поддерживаются сетевые карты Intel 82578, 82579, I217, I218 и I219
   * Требуется OS X 10.9 или новее, пользователи 10.8-10.8 могут использовать вместо этого IntelSnowMausi для более старых ОС
 * [SmallTreeIntel82576 kext](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases)
-  * Требуется для сетевых карт i211, основан на кексте SmallTree, но пропатчен для поддержки I211
+  * Требуется для сетевых карт I211, основан на кексте SmallTree, но пропатчен для поддержки I211
   * Требуется для большинства AMD плат с сетевыми картами Intel
   * Требуется OS X 10.9-12(v1.0.6), macOS 10.13-14(v1.2.5), macOS 10.15+(v1.3.0)
 * [AtherosE2200Ethernet](https://github.com/Mieze/AtherosE2200Ethernet/releases)
@@ -162,10 +162,12 @@ Kext - это **k**ernel **ext**ension, вы можете думать что э
 * [LucyRTL8125Ethernet](https://www.insanelymac.com/forum/files/file/1004-lucyrtl8125ethernet/)
   * Для 2.5-гигабитного Ethernet от Realtek
   * Требуется macOS 10.15 или новее
-* Для сетевых карт Intel i225-V, патчи упомянуты в разделе desktop Comet Lake DeviceProperty. Кекст не требуется.
+* Для сетевых карт Intel I225-V, патчи упомянуты в разделе настольного [Comet Lake DeviceProperties](config.plist/comet-lake.md#deviceproperties). Кекст не требуется.
   * Требуется macOS 10.15 или новее
+* Для сетевых карт Intel I350, патчи упомянуты в разделе HEDT [Sandy и Ivy Bridge-E DeviceProperties](config-HEDT/ivy-bridge-e.md#deviceproperties). Кекст не требуется.
+  * Требуется OS X 10.10 или новее
 
-::: details Legacy Ethernet Кексты
+::: details Legacy Ethernet кексты
 
 Актуальны как для legacy установок macOS, так и для устаревшего ПК оборудования.
 
