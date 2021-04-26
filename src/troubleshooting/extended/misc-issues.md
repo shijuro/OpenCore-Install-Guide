@@ -13,7 +13,7 @@
 * [Неправильно выбирается загрузочный диск](#неправильно-выбирается-загрузочныи-диск)
 * [Загрузка Windows приводит к синему экрану смерти или крашам Linux](#загрузка-windows-приводит-к-синему-экрану-смерти-или-крашам-linux)
 * [Ошибка при загрузке Windows: `OCB: StartImage failed - Already started`](#ошибка-при-загрузке-windows-ocb-startimage-failed-already-started)
-* [iASL warning, # unresolved](#iasl-warning-unresolved)
+* [iASL warning, only X unresolved](#iasl-warning-only-x-unresolved)
 
 ## Невозможно запустить `acpidump.efi`
 
@@ -90,7 +90,7 @@ fs0:\EFI\OC\Tools> acpidump.efi -b -n DSDT -z
 
 Это связано с тем, что OpenCore запутывается при загрузке Windows, и случайно думает, что он загружает OpenCore. Этого можно избежать либо перемещением Windows на отдельный диск, *или же* добавлением Custom Path к диску в BlessOverride. См. [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf) для получения подробностей.
 
-## iASL warning, # unresolved
+## iASL warning, only X unresolved
 
 Если вы пытаетесь декомпилировать ваш DSDT и получаете ошибку подобную этой:
 

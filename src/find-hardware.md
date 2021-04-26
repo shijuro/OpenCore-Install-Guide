@@ -119,13 +119,13 @@
 ### Модель процессора
 
 ```sh
-cat /proc/cpuinfo | grep 'model name'
+cat /proc/cpuinfo | grep -i "model name"
 ```
 
 ### Модель графического процессора
 
 ```sh
-lspci | grep -i --color 'vga\|3d\|2d'
+lspci | grep -i --color "vga\|3d\|2d"
 ```
 
 ### Модель чипсета
@@ -137,7 +137,7 @@ dmidecode -t baseboard
 ### Тип подключения клавиатуры, трекпада и сенсорного экрана
 
 ```sh
-dmesg |grep -i 'input'
+dmesg | grep -i input
 ```
 
 ### Аудиокодек

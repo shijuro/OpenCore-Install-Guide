@@ -157,8 +157,8 @@ Kext - это **k**ernel **ext**ension, вы можете думать что э
   * Note: Модели Atheros Killer E2500 на самом деле сделаны на базе Realtek, вместо этого для этих систем, пожалуйста, используйте [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases)
 * [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases)
   * Для гигабитного Ethernet от Realtek
-  * Требуется OS X 10.8-11(2.2.0), 10.12-13(v2.2.2), 10.14+(2.3.0)
-  * **ПРИМЕЧАНИЕ: Иногда гигабитный Ethernet от Realtek может работать некорректно, если у вас RealtekRTL8111 v2.3.0. Если вы наблюдаете эту проблему, попробуйте версию 2.2.2**
+  * Требуется OS X 10.8-11(2.2.0), 10.12-13(v2.2.2), 10.14+(2.3.0) <!-- перевести: Requires OS X 10.8 and up for versions v2.2.0 and below, macOS 10.12 and up for versions v2.2.2 through v2.3.0 (inclusive), macOS 10.14 and up for versions v2.4.0 and up -->
+  * **ПРИМЕЧАНИЕ:** Иногда последняя версия кекста может работать некорректно с вашим Ethernet. Если вы наблюдаете эту проблему, попробуйте более старые версии.
 * [LucyRTL8125Ethernet](https://www.insanelymac.com/forum/files/file/1004-lucyrtl8125ethernet/)
   * Для 2.5-гигабитного Ethernet от Realtek
   * Требуется macOS 10.15 или новее
@@ -349,7 +349,7 @@ pci14e4,1686 = Broadcom BCM57766
 
 ### Особенности ноутбуков
 
-Чтобы узнать, какая у вас клавиатура и трекпад, посмотрите Диспетчер Устройств в Windows или `dmesg | grep input` в Linux
+Чтобы узнать, какая у вас клавиатура и трекпад, посмотрите Диспетчер Устройств в Windows или `dmesg | grep -i input` в Linux
 
 #### Драйверы ввода
 
