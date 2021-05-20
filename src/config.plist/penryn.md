@@ -2,7 +2,7 @@
 
 | Поддержка | Версия |
 | :--- | :--- |
-| Поддерживаемая версия OpenCore | 0.6.8 |
+| Поддерживаемая версия OpenCore | 0.6.9 |
 | Начало поддержки в macOS: Penryn | OS X 10.4.10, Tiger |
 | Последняя поддерживаемая macOS: Penryn | macOS 10.13.6 High Sierra |
 | Примечание | Поддержка iGPU не рассматривается в этом руководстве, см. здесь: [Патчинг GMA (на английском)](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)|

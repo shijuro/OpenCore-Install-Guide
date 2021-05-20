@@ -2,7 +2,7 @@
 
 | Поддержка | Версия |
 | :--- | :--- |
-| Поддерживаемая версия OpenCore | 0.6.8 |
+| Поддерживаемая версия OpenCore | 0.6.9 |
 | Начало поддержки в macOS([CFL](https://en.wikipedia.org/wiki/Coffee_Lake)) | macOS 10.13, High Sierra |
 | Начало поддержки в macOS([CML](https://en.wikipedia.org/wiki/Comet_Lake_(microprocessor))) | macOS 10.15, Catalina |
 
